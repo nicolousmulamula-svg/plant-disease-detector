@@ -129,8 +129,15 @@ if uploaded_file is not None and model_loaded:
     st.markdown("---")
     st.markdown("##  Maelezo ya Ugonjwa")
     
-    if predicted_class_name in disease_info:
-        info = disease_info[predicted_class_name]
+    # Tafuta kwa case-insensitive
+predicted_key = None
+for key in disease_info.keys():
+    if key.lower() == predicted_class_name.lower():
+        predicted_key = key
+        break
+
+if predicted_key:
+    info = disease_info[predicted_key]
         
         st.markdown(f"### {info.get('jina_kamili', predicted_class_name)}")
         
