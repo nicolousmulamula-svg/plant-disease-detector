@@ -1,0 +1,30 @@
+{
+  "anthracnose": {
+    "jina_kamili": "Anthracnose (Mnyauko wa Fangasi)",
+    "sababu": "Inasababishwa na fangasi aina ya Colletotrichum. Huenea kwa kasi kwenye hali ya hewa yenye unyevu mwingi na joto.",
+    "dalili": "Madoa meusi yaliyozama kwenye matunda, majani, na maua. Matunda yanaoza na kuwa meusi.",
+    "matibabu": "Tumia dawa za kuvu (fungicides) kama Copper Oxychloride au Mancozeb. Ng'oa na choma mimea iliyoathirika.",
+    "kinga": "1. Epuka kupanda mimea karibu sana.\n2. Tumia mbegu zilizo na kinga.\n3. Kausha majani yaliyoanguka.\n4. Tumia dawa za kuvu kama kinga mapema."
+  },
+  "blight": {
+    "jina_kamili": "Blight (Mnyauko wa Majani na Matunda)",
+    "sababu": "Inasababishwa na fangasi aina ya Alternaria solani (Early Blight) au Phytophthora infestans (Late Blight). Huenea kwa kasi kwenye hali ya hewa ya baridi na unyevu.",
+    "dalili": "Madoa meusi yenye pete (concentric rings) kwenye majani, mashina, na matunda. Majani yanageuka njano na kukauka.",
+    "matibabu": "Tumia dawa za kuvu kama Chlorothalonil au Copper-based fungicides. Ondoa majani yaliyoathirika mara moja.",
+    "kinga": "1. Tumia mbegu zilizo na kinga.\n2. Zungusha mimea (crop rotation) kila msimu.\n3. Epuka kumwagilia maji kwenye majani.\n4. Weka mimea kwa nafasi ya kutosha ili hewa ipite."
+  },
+  "pest_infestation": {
+    "jina_kamili": "Pest Infestation (Uvamizi wa Wadudu)",
+    "sababu": "Inasababishwa na wadudu kama Whiteflies, Aphids, au Fruit Borers. Wanafyonza maji ya mimea na kueneza magonjwa.",
+    "dalili": "Wadudu wadogo wanaonekana kwenye majani, ute mweupe, matundu kwenye matunda, na majani yanageuka njano.",
+    "matibabu": "Tumia dawa za wadudu (insecticides) kama Neem oil au Pyrethrin. Tumia wadudu wengine kama ladybugs (biological control).",
+    "kinga": "1. Weka mimea kwa nafasi ya kutosha.\n2. Tumia vyandarua (netting) kuzuia wadudu.\n3. Plant marigold karibu na mimea kuzuia wadudu.\n4. Angalia mimea mara kwa mara."
+  },
+  "healthy": {
+    "jina_kamili": "Mmea Wenye Afya",
+    "sababu": "Hakuna ugonjwa unaoonekana. Mmea una afya njema.",
+    "dalili": "Majani ya kijani kibichi, hakuna madoa, matunda yana afya.",
+    "matibabu": "Hakuna matibabu yanayohitajika. Endelea kutunza mmea vizuri.",
+    "kinga": "1. Endelea kumwagilia maji kwa kiasi.\n2. Weka mbolea muhimu.\n3. Angalia mimea mara kwa mara ili kugundua magonjwa mapema."
+  }
+}
