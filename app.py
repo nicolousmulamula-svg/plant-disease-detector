@@ -19,16 +19,13 @@ st.set_page_config(
 # ==========================================
 @st.cache_resource
 def load_model():
-    # Badilisha jina la model kuwa yako mpya
     model = tf.keras.models.load_model('animal_disease_model_final.h5')
     return model
 
 @st.cache_resource
 def load_class_indices():
-    # Badilisha jina la faili la class indices
     with open('class_indices_final.json', 'r') as f:
         class_indices = json.load(f)
-    # Geuza dictionary (0: 'anthracnose', 1: 'blight', ...)
     return {v: k for k, v in class_indices.items()}
 
 @st.cache_resource
@@ -37,7 +34,6 @@ def load_disease_info():
         disease_info = json.load(f)
     return disease_info
 
-# Load resources
 try:
     model = load_model()
     class_labels = load_class_indices()
@@ -48,7 +44,7 @@ except Exception as e:
     model_loaded = False
 
 # ==========================================
-# 3. SIDEBAR (Maelezo ya App)
+# 3. SIDEBAR
 # ==========================================
 with st.sidebar:
     st.image("https://img.icons8.com/color/96/000000/plant-under-sun.png", width=100)
@@ -78,38 +74,41 @@ st.title(" Plant & Animal Disease Detector")
 st.markdown("### Upload picha ya mmea au mnyama ili kutambua ugonjwa na kupata ushauri")
 st.markdown("---")
 
-# File Uploader
 uploaded_file = st.file_uploader(
     "Chagua picha (JPG, JPEG, PNG)",
     type=["jpg", "jpeg", "png"]
 )
 
 if uploaded_file is not None and model_loaded:
-    # Tengeneza columns mbili
     col1, col2 = st.columns([1, 1])
     
     with col1:
         st.markdown("####  Picha Uliyopakia")
         image = Image.open(uploaded_file)
-        # BADILISHA: use_column_width -> use_container_width
         st.image(image, caption="Picha Uliyopakia", use_container_width=True)
     
-    # Preprocess picha
-    img = image.resize((224, 224))
-    img_array = np.array(img) / 255.0
+    # ==========================================
+    # FIX: Convert picha kuwa RGB na float32
+    # ==========================================
+    img = image.convert('RGB')  # Hakikisha ina channels 3 (RGB)
+    img = img.resize((224, 224))
+    img_array = np.array(img, dtype=np.float32) / 255.0
     img_array = np.expand_dims(img_array, axis=0)
     
     # Fanya Prediction
     with st.spinner("Inachunguza picha..."):
-        predictions = model.predict(img_array)
-        predicted_class_index = np.argmax(predictions[0])
-        confidence = np.max(predictions[0]) * 100
-        predicted_class_name = class_labels[predicted_class_index]
+        try:
+            predictions = model.predict(img_array)
+            predicted_class_index = np.argmax(predictions[0])
+            confidence = np.max(predictions[0]) * 100
+            predicted_class_name = class_labels[predicted_class_index]
+        except Exception as e:
+            st.error(f"Error wakati wa prediction: {e}")
+            st.stop()
     
     with col2:
-        st.markdown("####  Matokeo ya Uchunguzi")
+        st.markdown("#### 🩺 Matokeo ya Uchunguzi")
         
-        # Onyesha jina la ugonjwa kwa rangi
         if confidence > 70:
             st.success(f"**Ugonjwa:** {predicted_class_name.upper()}")
         elif confidence > 40:
@@ -119,10 +118,8 @@ if uploaded_file is not None and model_loaded:
         
         st.metric(label="Uhakika (Confidence)", value=f"{confidence:.2f}%")
         
-        # Onyesha uwezekano wa kila darasa
         st.markdown("##### Uwezekano wa Kila Darasa:")
         for i, prob in enumerate(predictions[0]):
-            # BADILISHA: st.progress(text=...) -> st.write()
             st.progress(float(prob))
             st.write(f"{class_labels[i]}: {prob*100:.2f}%")
     
@@ -137,7 +134,6 @@ if uploaded_file is not None and model_loaded:
         
         st.markdown(f"### {info.get('jina_kamili', predicted_class_name)}")
         
-        # Tengeneza tabs kwa maelezo
         tab1, tab2, tab3, tab4 = st.tabs([" Sababu", " Dalili", " Matibabu", " Kinga"])
         
         with tab1:
