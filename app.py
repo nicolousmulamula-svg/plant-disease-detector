@@ -47,12 +47,11 @@ except Exception as e:
 # 3. SIDEBAR
 # ==========================================
 with st.sidebar:
-    st.image("https://img.icons8.com/color/96/000000/plant-under-sun.png", width=100)
     st.title("Plant & Animal Disease Detector")
     st.markdown("---")
     st.markdown("### Kuhusu App Hii")
     st.info(
-        "App hii inatumia **Deep Learning (MobileNetV2)** kutambua magonjwa ya mimea "
+        "App hii inatumia Deep Learning (MobileNetV2) kutambua magonjwa ya mimea "
         "na wanyama (kuku) kutoka kwenye picha. Ni kwa ajili ya majaribio tu."
     )
     st.markdown("### Jinsi ya Kutumia")
@@ -70,7 +69,7 @@ with st.sidebar:
 # ==========================================
 # 4. MAIN CONTENT
 # ==========================================
-st.title(" Plant & Animal Disease Detector")
+st.title("Plant & Animal Disease Detector")
 st.markdown("### Upload picha ya mmea au mnyama ili kutambua ugonjwa na kupata ushauri")
 st.markdown("---")
 
@@ -83,14 +82,12 @@ if uploaded_file is not None and model_loaded:
     col1, col2 = st.columns([1, 1])
     
     with col1:
-        st.markdown("####  Picha Uliyopakia")
+        st.markdown("#### Picha Uliyopakia")
         image = Image.open(uploaded_file)
         st.image(image, caption="Picha Uliyopakia", use_container_width=True)
     
-    # ==========================================
-    # FIX: Convert picha kuwa RGB na float32
-    # ==========================================
-    img = image.convert('RGB')  # Hakikisha ina channels 3 (RGB)
+    # Convert picha kuwa RGB na float32
+    img = image.convert('RGB')
     img = img.resize((224, 224))
     img_array = np.array(img, dtype=np.float32) / 255.0
     img_array = np.expand_dims(img_array, axis=0)
@@ -107,14 +104,14 @@ if uploaded_file is not None and model_loaded:
             st.stop()
     
     with col2:
-        st.markdown("#### 🩺 Matokeo ya Uchunguzi")
+        st.markdown("#### Matokeo ya Uchunguzi")
         
         if confidence > 70:
-            st.success(f"**Ugonjwa:** {predicted_class_name.upper()}")
+            st.success(f"Ugonjwa: {predicted_class_name.upper()}")
         elif confidence > 40:
-            st.warning(f"**Ugonjwa:** {predicted_class_name.upper()}")
+            st.warning(f"Ugonjwa: {predicted_class_name.upper()}")
         else:
-            st.error(f"**Ugonjwa:** {predicted_class_name.upper()}")
+            st.error(f"Ugonjwa: {predicted_class_name.upper()}")
         
         st.metric(label="Uhakika (Confidence)", value=f"{confidence:.2f}%")
         
@@ -124,24 +121,23 @@ if uploaded_file is not None and model_loaded:
             st.write(f"{class_labels[i]}: {prob*100:.2f}%")
     
     # ==========================================
-    # 5. MAELEZO YA UGONJWA
+    # 5. MAELEZO YA UGONJWA (Case-Insensitive)
     # ==========================================
     st.markdown("---")
-    st.markdown("##  Maelezo ya Ugonjwa")
+    st.markdown("## Maelezo ya Ugonjwa")
     
-    # Tafuta kwa case-insensitive
-predicted_key = None
-for key in disease_info.keys():
-    if key.lower() == predicted_class_name.lower():
-        predicted_key = key
-        break
-
-if predicted_key:
-    info = disease_info[predicted_key]
+    predicted_key = None
+    for key in disease_info.keys():
+        if key.lower() == predicted_class_name.lower():
+            predicted_key = key
+            break
+    
+    if predicted_key:
+        info = disease_info[predicted_key]
         
         st.markdown(f"### {info.get('jina_kamili', predicted_class_name)}")
         
-        tab1, tab2, tab3, tab4 = st.tabs([" Sababu", " Dalili", " Matibabu", " Kinga"])
+        tab1, tab2, tab3, tab4 = st.tabs(["Sababu", "Dalili", "Matibabu", "Kinga"])
         
         with tab1:
             st.info(info.get('sababu', 'Hakuna maelezo.'))
