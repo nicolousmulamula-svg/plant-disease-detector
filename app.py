@@ -19,16 +19,15 @@ st.set_page_config(
 # ==========================================
 @st.cache_resource
 def load_model():
-    # Badilisha jina la model kuwa yako mpya
-    model = tf.keras.models.load_model('animal_disease_model_final.h5')
+    # TUMIA MODEL MPYA (V3)
+    model = tf.keras.models.load_model('animal_plant_disease_model_v3.h5')
     return model
 
 @st.cache_resource
 def load_class_indices():
-    # Badilisha jina la faili la class indices
-    with open('class_indices_final.json', 'r') as f:
+    # TUMIA CLASS INDICES MPYA (V3)
+    with open('class_indices_v3.json', 'r') as f:
         class_indices = json.load(f)
-    # Geuza dictionary (0: 'anthracnose', 1: 'blight', ...)
     return {v: k for k, v in class_indices.items()}
 
 @st.cache_resource
@@ -37,7 +36,6 @@ def load_disease_info():
         disease_info = json.load(f)
     return disease_info
 
-# Load resources
 try:
     model = load_model()
     class_labels = load_class_indices()
@@ -48,16 +46,15 @@ except Exception as e:
     model_loaded = False
 
 # ==========================================
-# 3. SIDEBAR (Maelezo ya App)
+# 3. SIDEBAR
 # ==========================================
 with st.sidebar:
-    st.image("https://img.icons8.com/color/96/000000/plant-under-sun.png", width=100)
     st.title("Plant & Animal Disease Detector")
     st.markdown("---")
     st.markdown("### Kuhusu App Hii")
     st.info(
-        "App hii inatumia **Deep Learning (MobileNetV2)** kutambua magonjwa ya mimea "
-        "na wanyama (kuku) kutoka kwenye picha. Ni kwa ajili ya majaribio tu."
+        "App hii inatumia Deep Learning (MobileNetV2) kutambua magonjwa mbalimbali "
+        "ya mimea na wanyama kutoka kwenye picha. Ni kwa ajili ya majaribio tu."
     )
     st.markdown("### Jinsi ya Kutumia")
     st.markdown(
@@ -68,77 +65,85 @@ with st.sidebar:
     st.markdown("---")
     st.markdown("### Madarasa Yanayotambulika")
     if model_loaded:
+        # Onyesha madarasa yote yaliyopo
         for label in class_labels.values():
             st.markdown(f"- {label}")
 
 # ==========================================
 # 4. MAIN CONTENT
 # ==========================================
-st.title(" Plant & Animal Disease Detector")
+st.title("Plant & Animal Disease Detector")
 st.markdown("### Upload picha ya mmea au mnyama ili kutambua ugonjwa na kupata ushauri")
 st.markdown("---")
 
-# File Uploader
 uploaded_file = st.file_uploader(
     "Chagua picha (JPG, JPEG, PNG)",
     type=["jpg", "jpeg", "png"]
 )
 
 if uploaded_file is not None and model_loaded:
-    # Tengeneza columns mbili
     col1, col2 = st.columns([1, 1])
     
     with col1:
-        st.markdown("####  Picha Uliyopakia")
+        st.markdown("#### Picha Uliyopakia")
         image = Image.open(uploaded_file)
-        # BADILISHA: use_column_width -> use_container_width
         st.image(image, caption="Picha Uliyopakia", use_container_width=True)
     
-    # Preprocess picha
-    img = image.resize((224, 224))
-    img_array = np.array(img) / 255.0
+    # Convert picha kuwa RGB na float32
+    img = image.convert('RGB')
+    img = img.resize((224, 224))
+    img_array = np.array(img, dtype=np.float32) / 255.0
     img_array = np.expand_dims(img_array, axis=0)
     
     # Fanya Prediction
     with st.spinner("Inachunguza picha..."):
-        predictions = model.predict(img_array)
-        predicted_class_index = np.argmax(predictions[0])
-        confidence = np.max(predictions[0]) * 100
-        predicted_class_name = class_labels[predicted_class_index]
+        try:
+            predictions = model.predict(img_array)
+            predicted_class_index = np.argmax(predictions[0])
+            confidence = np.max(predictions[0]) * 100
+            predicted_class_name = class_labels[predicted_class_index]
+        except Exception as e:
+            st.error(f"Error wakati wa prediction: {e}")
+            st.stop()
     
     with col2:
-        st.markdown("####  Matokeo ya Uchunguzi")
+        st.markdown("#### Matokeo ya Uchunguzi")
         
-        # Onyesha jina la ugonjwa kwa rangi
         if confidence > 70:
-            st.success(f"**Ugonjwa:** {predicted_class_name.upper()}")
+            st.success(f"Ugonjwa: {predicted_class_name.upper()}")
         elif confidence > 40:
-            st.warning(f"**Ugonjwa:** {predicted_class_name.upper()}")
+            st.warning(f"Ugonjwa: {predicted_class_name.upper()}")
         else:
-            st.error(f"**Ugonjwa:** {predicted_class_name.upper()}")
+            st.error(f"Ugonjwa: {predicted_class_name.upper()}")
         
         st.metric(label="Uhakika (Confidence)", value=f"{confidence:.2f}%")
         
-        # Onyesha uwezekano wa kila darasa
         st.markdown("##### Uwezekano wa Kila Darasa:")
+        # Kwa kuwa tuna madarasa mengi, tunaonyesha yale yenye uwezekano zaidi ya 1% tu
         for i, prob in enumerate(predictions[0]):
-            # BADILISHA: st.progress(text=...) -> st.write()
-            st.progress(float(prob))
-            st.write(f"{class_labels[i]}: {prob*100:.2f}%")
+            if prob > 0.01: # Onyesha tu kama uwezekano ni zaidi ya 1%
+                st.progress(float(prob))
+                st.write(f"{class_labels[i]}: {prob*100:.2f}%")
     
     # ==========================================
-    # 5. MAELEZO YA UGONJWA
+    # 5. MAELEZO YA UGONJWA (Case-Insensitive)
     # ==========================================
     st.markdown("---")
-    st.markdown("##  Maelezo ya Ugonjwa")
+    st.markdown("## Maelezo ya Ugonjwa")
     
-    if predicted_class_name in disease_info:
-        info = disease_info[predicted_class_name]
+    # Tafuta jina la ugonjwa kwenye disease_info bila kujali herufi kubwa/ndogo
+    predicted_key = None
+    for key in disease_info.keys():
+        if key.lower() == predicted_class_name.lower():
+            predicted_key = key
+            break
+    
+    if predicted_key:
+        info = disease_info[predicted_key]
         
         st.markdown(f"### {info.get('jina_kamili', predicted_class_name)}")
         
-        # Tengeneza tabs kwa maelezo
-        tab1, tab2, tab3, tab4 = st.tabs([" Sababu", " Dalili", " Matibabu", " Kinga"])
+        tab1, tab2, tab3, tab4 = st.tabs(["Sababu", "Dalili", "Matibabu", "Kinga"])
         
         with tab1:
             st.info(info.get('sababu', 'Hakuna maelezo.'))
@@ -152,7 +157,10 @@ if uploaded_file is not None and model_loaded:
         with tab4:
             st.markdown(info.get('kinga', 'Hakuna maelezo.'))
     else:
-        st.info("Maelezo ya ugonjwa huu hayapatikani kwa sasa.")
+        st.info("Maelezo ya ugonjwa huu hayapatikani kwa sasa kwenye mfumo wetu.")
+        # Debug info (unaweza kuifuta baadaye)
+        st.write("---")
+        st.write(f"**Debug:** Ugonjwa uliotabiriwa ni `{predicted_class_name}`")
 
 # ==========================================
 # 6. FOOTER
