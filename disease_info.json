@@ -1,30 +1,303 @@
 {
-  "anthracnose": {
-    "jina_kamili": "Anthracnose (Mnyauko wa Fangasi)",
-    "sababu": "Inasababishwa na fangasi aina ya Colletotrichum. Huenea kwa kasi kwenye hali ya hewa yenye unyevu mwingi na joto.",
-    "dalili": "Madoa meusi yaliyozama kwenye matunda, majani, na maua. Matunda yanaoza na kuwa meusi.",
-    "matibabu": "Tumia dawa za kuvu (fungicides) kama Copper Oxychloride au Mancozeb. Ng'oa na choma mimea iliyoathirika.",
-    "kinga": "1. Epuka kupanda mimea karibu sana.\n2. Tumia mbegu zilizo na kinga.\n3. Kausha majani yaliyoanguka.\n4. Tumia dawa za kuvu kama kinga mapema."
+  "Anthracnose": {
+    "jina_kamili": "Anthracnose",
+    "sababu": "Fungal infection caused by Colletotrichum species.",
+    "dalili": "Dark, sunken lesions on fruits, leaves, and stems.",
+    "matibabu": "Apply copper-based fungicides. Remove and destroy infected plant parts.",
+    "kinga": "Ensure proper spacing, avoid overhead watering, and use disease-free seeds."
   },
-  "blight": {
-    "jina_kamili": "Blight (Mnyauko wa Majani na Matunda)",
-    "sababu": "Inasababishwa na fangasi aina ya Alternaria solani (Early Blight) au Phytophthora infestans (Late Blight). Huenea kwa kasi kwenye hali ya hewa ya baridi na unyevu.",
-    "dalili": "Madoa meusi yenye pete (concentric rings) kwenye majani, mashina, na matunda. Majani yanageuka njano na kukauka.",
-    "matibabu": "Tumia dawa za kuvu kama Chlorothalonil au Copper-based fungicides. Ondoa majani yaliyoathirika mara moja.",
-    "kinga": "1. Tumia mbegu zilizo na kinga.\n2. Zungusha mimea (crop rotation) kila msimu.\n3. Epuka kumwagilia maji kwenye majani.\n4. Weka mimea kwa nafasi ya kutosha ili hewa ipite."
+  "Anthrax_Kimeta": {
+    "jina_kamili": "Anthrax (Kimeta)",
+    "sababu": "Bacterial infection caused by Bacillus anthracis.",
+    "dalili": "Sudden death, bleeding from natural openings, and swollen carcasses.",
+    "matibabu": "Antibiotics like penicillin if detected early, but often fatal.",
+    "kinga": "Vaccination of livestock, proper disposal of carcasses, and avoiding contact with infected animals."
   },
-  "pest_infestation": {
-    "jina_kamili": "Pest Infestation (Uvamizi wa Wadudu)",
-    "sababu": "Inasababishwa na wadudu kama Whiteflies, Aphids, au Fruit Borers. Wanafyonza maji ya mimea na kueneza magonjwa.",
-    "dalili": "Wadudu wadogo wanaonekana kwenye majani, ute mweupe, matundu kwenye matunda, na majani yanageuka njano.",
-    "matibabu": "Tumia dawa za wadudu (insecticides) kama Neem oil au Pyrethrin. Tumia wadudu wengine kama ladybugs (biological control).",
-    "kinga": "1. Weka mimea kwa nafasi ya kutosha.\n2. Tumia vyandarua (netting) kuzuia wadudu.\n3. Plant marigold karibu na mimea kuzuia wadudu.\n4. Angalia mimea mara kwa mara."
+  "Aspergillosis": {
+    "jina_kamili": "Aspergillosis",
+    "sababu": "Fungal infection caused by Aspergillus species, common in poultry and birds.",
+    "dalili": "Respiratory distress, gasping, and white nodules in lungs.",
+    "matibabu": "Antifungal medications (e.g., itraconazole) and improved ventilation.",
+    "kinga": "Keep bedding dry, avoid moldy feed, and ensure good ventilation."
   },
-  "healthy": {
-    "jina_kamili": "Mmea Wenye Afya",
-    "sababu": "Hakuna ugonjwa unaoonekana. Mmea una afya njema.",
-    "dalili": "Majani ya kijani kibichi, hakuna madoa, matunda yana afya.",
-    "matibabu": "Hakuna matibabu yanayohitajika. Endelea kutunza mmea vizuri.",
-    "kinga": "1. Endelea kumwagilia maji kwa kiasi.\n2. Weka mbolea muhimu.\n3. Angalia mimea mara kwa mara ili kugundua magonjwa mapema."
+  "Avian_Influenza": {
+    "jina_kamili": "Avian Influenza (Bird Flu)",
+    "sababu": "Highly contagious viral infection affecting birds.",
+    "dalili": "Sudden death, swollen heads, respiratory distress, and drop in egg production.",
+    "matibabu": "No specific treatment; culling is often necessary to prevent spread.",
+    "kinga": "Strict biosecurity, avoid contact with wild birds, and vaccination where available."
+  },
+  "Avian_Leukosis": {
+    "jina_kamili": "Avian Leukosis",
+    "sababu": "Viral infection causing tumors in poultry.",
+    "dalili": "Weight loss, pale combs, and tumors in internal organs.",
+    "matibabu": "No treatment; infected birds should be culled.",
+    "kinga": "Breed from virus-free stock and maintain strict hygiene."
+  },
+  "Bacterial blight": {
+    "jina_kamili": "Bacterial Blight",
+    "sababu": "Bacterial infection caused by Xanthomonas species.",
+    "dalili": "Water-soaked spots on leaves that turn brown, often with yellow halos.",
+    "matibabu": "Copper-based bactericides. Remove infected plants.",
+    "kinga": "Use resistant varieties, crop rotation, and clean tools."
+  },
+  "Bacterial Canker": {
+    "jina_kamili": "Bacterial Canker",
+    "sababu": "Bacterial infection causing cankers on stems and branches.",
+    "dalili": "Sunken, dark lesions on stems, gum exudation, and leaf yellowing.",
+    "matibabu": "Prune infected branches and apply copper sprays.",
+    "kinga": "Avoid injuries to plants, disinfect tools, and maintain good orchard hygiene."
+  },
+  "Bacterial speck": {
+    "jina_kamili": "Bacterial Speck",
+    "sababu": "Bacterial infection (Pseudomonas syringae) affecting tomatoes.",
+    "dalili": "Small, dark, water-soaked spots on leaves and fruits.",
+    "matibabu": "Copper-based sprays; avoid working in wet fields.",
+    "kinga": "Use certified seeds, crop rotation, and proper spacing."
+  },
+  "Bacterial spot": {
+    "jina_kamili": "Bacterial Spot",
+    "sababu": "Bacterial infection (Xanthomonas species) affecting leaves and fruits.",
+    "dalili": "Small, dark, greasy spots on leaves and fruits.",
+    "matibabu": "Copper fungicides and removal of infected leaves.",
+    "kinga": "Use disease-free seeds, crop rotation, and avoid overhead irrigation."
+  },
+  "Blossom_Blight": {
+    "jina_kamili": "Blossom Blight",
+    "sababu": "Fungal infection affecting flowers, often in wet conditions.",
+    "dalili": "Flowers turn brown and die, leading to fruit drop.",
+    "matibabu": "Apply fungicides during bloom.",
+    "kinga": "Improve air circulation and avoid overhead watering."
+  },
+  "Brown_Streak_Disease": {
+    "jina_kamili": "Brown Streak Disease",
+    "sababu": "Viral disease transmitted by whiteflies.",
+    "dalili": "Brown streaks on stems, leaf yellowing, and tuber rot.",
+    "matibabu": "No cure; remove infected plants.",
+    "kinga": "Use resistant varieties and control whiteflies."
+  },
+  "Candidiasis": {
+    "jina_kamili": "Candidiasis",
+    "sababu": "Fungal infection (Candida) affecting poultry.",
+    "dalili": "White patches in the mouth and throat, poor growth.",
+    "matibabu": "Antifungal treatment and improved hygiene.",
+    "kinga": "Keep water clean and avoid overcrowding."
+  },
+  "Coccidiosis": {
+    "jina_kamili": "Coccidiosis",
+    "sababu": "Parasitic infection (Eimeria) affecting the intestines.",
+    "dalili": "Bloody diarrhea, weight loss, and weakness.",
+    "matibabu": "Anticoccidial drugs and vitamin supplements.",
+    "kinga": "Keep bedding dry and use coccidiostats in feed."
+  },
+  "Downy_Mildew": {
+    "jina_kamili": "Downy Mildew",
+    "sababu": "Fungal-like organism (Oomycete) in humid conditions.",
+    "dalili": "Yellow spots on leaves with white/gray fuzz underneath.",
+    "matibabu": "Fungicides and removal of infected leaves.",
+    "kinga": "Improve air circulation and avoid wet foliage."
+  },
+  "Early_Blight": {
+    "jina_kamili": "Early Blight",
+    "sababu": "Fungal infection (Alternaria solani) in tomatoes and potatoes.",
+    "dalili": "Dark spots with concentric rings on leaves and fruits.",
+    "matibabu": "Fungicides and crop rotation.",
+    "kinga": "Use resistant varieties and avoid overhead watering."
+  },
+  "East_Coast_Fever": {
+    "jina_kamili": "East Coast Fever",
+    "sababu": "Parasitic infection (Theileria parva) transmitted by ticks.",
+    "dalili": "High fever, swollen lymph nodes, and death.",
+    "matibabu": "Anti-parasitic drugs and tick control.",
+    "kinga": "Tick control and vaccination."
+  },
+  "Foot_and_Mouth_Disease": {
+    "jina_kamili": "Foot and Mouth Disease",
+    "sababu": "Highly contagious viral infection in cloven-hoofed animals.",
+    "dalili": "Blisters on mouth and feet, lameness, and fever.",
+    "matibabu": "Supportive care; vaccination is key for control.",
+    "kinga": "Vaccination and strict biosecurity."
+  },
+  "Fowl_Cholera": {
+    "jina_kamili": "Fowl Cholera",
+    "sababu": "Bacterial infection (Pasteurella multocida) in poultry.",
+    "dalili": "Sudden death, swollen wattles, and diarrhea.",
+    "matibabu": "Antibiotics and improved hygiene.",
+    "kinga": "Vaccination and sanitation."
+  },
+  "Fowl_Pox": {
+    "jina_kamili": "Fowl Pox",
+    "sababu": "Viral infection causing skin lesions in poultry.",
+    "dalili": "Wart-like nodules on head, combs, and wattles.",
+    "matibabu": "No cure; supportive care and iodine application.",
+    "kinga": "Vaccination and mosquito control."
+  },
+  "Fusarium wilt": {
+    "jina_kamili": "Fusarium Wilt",
+    "sababu": "Fungal infection (Fusarium) affecting roots and stems.",
+    "dalili": "Yellowing and wilting of leaves, starting from lower leaves.",
+    "matibabu": "No cure; remove infected plants.",
+    "kinga": "Crop rotation, resistant varieties, and soil solarization."
+  },
+  "Gumboro_Infectious_Bursal_Disease": {
+    "jina_kamili": "Gumboro Disease (IBD)",
+    "sababu": "Highly contagious viral infection in young chickens.",
+    "dalili": "Watery diarrhea, ruffled feathers, and immunosuppression.",
+    "matibabu": "No specific treatment; supportive care.",
+    "kinga": "Vaccination and strict biosecurity."
+  },
+  "healthy_animals_and_agricultural_products": {
+    "jina_kamili": "Healthy Animals and Agricultural Products",
+    "sababu": "No disease detected.",
+    "dalili": "Normal appearance, no lesions, healthy growth.",
+    "matibabu": "None needed.",
+    "kinga": "Maintain good husbandry and hygiene."
+  },
+  "Homa_ya_Mapafu_ya_Ngombe": {
+    "jina_kamili": "Bovine Respiratory Disease (Homa ya Mapafu)",
+    "sababu": "Multiple factors including bacteria and viruses.",
+    "dalili": "Coughing, nasal discharge, and difficulty breathing.",
+    "matibabu": "Antibiotics and anti-inflammatory drugs.",
+    "kinga": "Vaccination and good ventilation."
+  },
+  "Infectious_Bronchitis": {
+    "jina_kamili": "Infectious Bronchitis",
+    "sababu": "Viral infection in poultry affecting the respiratory system.",
+    "dalili": "Gasping, sneezing, and drop in egg production.",
+    "matibabu": "No specific treatment; supportive care.",
+    "kinga": "Vaccination and biosecurity."
+  },
+  "Infectious_Coryza": {
+    "jina_kamili": "Infectious Coryza",
+    "sababu": "Bacterial infection (Avibacterium paragallinarum).",
+    "dalili": "Swollen face, nasal discharge, and sneezing.",
+    "matibabu": "Antibiotics and vaccination.",
+    "kinga": "Biosecurity and vaccination."
+  },
+  "Infectious_Laryngotracheitis": {
+    "jina_kamili": "Infectious Laryngotracheitis",
+    "sababu": "Viral infection in poultry causing respiratory disease.",
+    "dalili": "Gasping, coughing blood, and swollen heads.",
+    "matibabu": "No specific treatment; vaccination is key.",
+    "kinga": "Strict biosecurity and vaccination."
+  },
+  "Kideri_Newcastle_Disease": {
+    "jina_kamili": "Newcastle Disease (Kideri)",
+    "sababu": "Highly contagious viral infection in birds.",
+    "dalili": "Respiratory distress, greenish diarrhea, and nervous signs.",
+    "matibabu": "No cure; vaccination is the main control.",
+    "kinga": "Vaccination and biosecurity."
+  },
+  "late blight": {
+    "jina_kamili": "Late Blight",
+    "sababu": "Fungal-like organism (Phytophthora infestans) in cool, wet conditions.",
+    "dalili": "Water-soaked spots on leaves that turn brown with white fuzz.",
+    "matibabu": "Fungicides and removal of infected plants.",
+    "kinga": "Resistant varieties and good air circulation."
+  },
+  "Mapele_Ngozi": {
+    "jina_kamili": "Mange/Skin Disease (Mapele ya Ngozi)",
+    "sababu": "Parasitic mites causing skin irritation.",
+    "dalili": "Itching, hair loss, and scabs on the skin.",
+    "matibabu": "Anti-parasitic dips or injections.",
+    "kinga": "Regular dipping and maintaining clean housing."
+  },
+  "Mareks_Disease": {
+    "jina_kamili": "Marek's Disease",
+    "sababu": "Viral infection causing tumors in poultry.",
+    "dalili": "Paralysis, weight loss, and tumors in nerves.",
+    "matibabu": "No treatment; culling is necessary.",
+    "kinga": "Vaccination at day-old and strict hygiene."
+  },
+  "Mastitis": {
+    "jina_kamili": "Mastitis",
+    "sababu": "Bacterial infection of the udder in dairy animals.",
+    "dalili": "Swollen, hot, and painful udder; abnormal milk.",
+    "matibabu": "Antibiotics and frequent milking.",
+    "kinga": "Good milking hygiene and proper housing."
+  },
+  "mosaic disease": {
+    "jina_kamili": "Mosaic Disease",
+    "sababu": "Viral infection causing mottled patterns on leaves.",
+    "dalili": "Yellow and green patches on leaves, stunted growth.",
+    "matibabu": "No cure; remove infected plants.",
+    "kinga": "Use resistant varieties and control insect vectors."
+  },
+  "multiple viruses": {
+    "jina_kamili": "Multiple Viral Infections",
+    "sababu": "Co-infection with different viruses.",
+    "dalili": "Severe symptoms, stunting, and yield loss.",
+    "matibabu": "No cure; manage vectors and remove infected plants.",
+    "kinga": "Use certified seeds and control vectors."
+  },
+  "Ndui": {
+    "jina_kamili": "Fowl Pox (Ndui ya Kuku)",
+    "sababu": "Viral infection causing skin lesions in poultry.",
+    "dalili": "Wart-like nodules on comb, wattles, and face.",
+    "matibabu": "No cure; apply iodine to lesions and use antibiotics for secondary infections.",
+    "kinga": "Vaccination and mosquito control."
+  },
+  "Pest_Infestation": {
+    "jina_kamili": "Pest Infestation",
+    "sababu": "Various insects and pests feeding on plants.",
+    "dalili": "Chewed leaves, holes in fruits, and presence of insects.",
+    "matibabu": "Use appropriate insecticides or biological controls.",
+    "kinga": "Regular monitoring and integrated pest management."
+  },
+  "photoplasma disease": {
+    "jina_kamili": "Phytoplasma Disease",
+    "sababu": "Bacterial-like organisms transmitted by insects.",
+    "dalili": "Yellowing, stunting, and abnormal growth.",
+    "matibabu": "No cure; remove infected plants.",
+    "kinga": "Control insect vectors and use clean planting material."
+  },
+  "Pullorum_Disease": {
+    "jina_kamili": "Pullorum Disease",
+    "sababu": "Bacterial infection (Salmonella pullorum) in poultry.",
+    "dalili": "White diarrhea, weakness, and high mortality in chicks.",
+    "matibabu": "Antibiotics; culling is often necessary.",
+    "kinga": "Blood testing and maintaining clean hatcheries."
+  },
+  "Rift_Valley_Fever": {
+    "jina_kamili": "Rift Valley Fever",
+    "sababu": "Viral infection transmitted by mosquitoes.",
+    "dalili": "Abortion in animals, flu-like symptoms in humans.",
+    "matibabu": "No specific treatment; supportive care.",
+    "kinga": "Vaccination and mosquito control."
+  },
+  "Root-knot nematode": {
+    "jina_kamili": "Root-knot Nematode",
+    "sababu": "Microscopic worms attacking plant roots.",
+    "dalili": "Galls on roots, stunted growth, and yellowing leaves.",
+    "matibabu": "Nematicides and crop rotation.",
+    "kinga": "Use resistant varieties and clean soil."
+  },
+  "Septoria_Leaf_Spot": {
+    "jina_kamili": "Septoria Leaf Spot",
+    "sababu": "Fungal infection in tomatoes.",
+    "dalili": "Small, circular spots with dark borders and gray centers.",
+    "matibabu": "Fungicides and removal of infected leaves.",
+    "kinga": "Crop rotation and avoid overhead watering."
+  },
+  "Vitamin_Deficiency": {
+    "jina_kamili": "Vitamin Deficiency",
+    "sababu": "Lack of essential vitamins in the diet.",
+    "dalili": "Poor growth, weakness, and specific signs like curled toes.",
+    "matibabu": "Vitamin supplements in feed or water.",
+    "kinga": "Balanced diet and proper feed formulation."
+  },
+  "Whitefly_Infestation": {
+    "jina_kamili": "Whitefly Infestation",
+    "sababu": "Small insects (whiteflies) feeding on plant sap.",
+    "dalili": "Whiteflies on leaves, sticky honeydew, and yellowing leaves.",
+    "matibabu": "Insecticides or biological controls.",
+    "kinga": "Use yellow sticky traps and resistant varieties."
+  },
+  "yellow leaf curl": {
+    "jina_kamili": "Yellow Leaf Curl",
+    "sababu": "Viral infection transmitted by whiteflies.",
+    "dalili": "Yellowing and curling of leaves, stunted growth.",
+    "matibabu": "No cure; remove infected plants.",
+    "kinga": "Control whiteflies and use resistant varieties."
   }
 }
