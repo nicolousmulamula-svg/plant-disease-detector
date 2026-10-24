@@ -65,7 +65,6 @@ with st.sidebar:
     st.markdown("---")
     st.markdown("### Madarasa Yanayotambulika")
     if model_loaded:
-        # Onyesha madarasa yote yaliyopo
         for label in class_labels.values():
             st.markdown(f"- {label}")
 
@@ -109,29 +108,47 @@ if uploaded_file is not None and model_loaded:
     with col2:
         st.markdown("#### Matokeo ya Uchunguzi")
         
-        if confidence > 70:
-            st.success(f"Ugonjwa: {predicted_class_name.upper()}")
-        elif confidence > 40:
-            st.warning(f"Ugonjwa: {predicted_class_name.upper()}")
+        # ==========================================
+        # 5. CONFIDENCE THRESHOLD LOGIC (CHINI YA 60%)
+        # ==========================================
+        if confidence < 60:
+            # Kama uhakika ni mdogo, onyesha onyo na usimamishe app
+            st.error("Picha hii haionekani kuwa ya mmea au mnyama, au haiko wazi.")
+            st.warning("Tafadhali pakia picha nyingine iliyo wazi na inayoonyesha mmea au mnyama vizuri.")
+            
+            # Onyesha uhakika mdogo kwa ajili ya maelezo
+            st.metric(label="Uhakika (Confidence)", value=f"{confidence:.2f}%")
+            
+            st.markdown("##### Uwezekano wa Kila Darasa (Chini ya 60%):")
+            for i, prob in enumerate(predictions[0]):
+                if prob > 0.01: 
+                    st.progress(float(prob))
+                    st.write(f"{class_labels[i]}: {prob*100:.2f}%")
+            
+            # Simamisha app hapa. Haitaendelea kuonyesha maelezo ya ugonjwa.
+            st.stop()
+            
         else:
-            st.error(f"Ugonjwa: {predicted_class_name.upper()}")
-        
-        st.metric(label="Uhakika (Confidence)", value=f"{confidence:.2f}%")
-        
-        st.markdown("##### Uwezekano wa Kila Darasa:")
-        # Kwa kuwa tuna madarasa mengi, tunaonyesha yale yenye uwezekano zaidi ya 1% tu
-        for i, prob in enumerate(predictions[0]):
-            if prob > 0.01: # Onyesha tu kama uwezekano ni zaidi ya 1%
-                st.progress(float(prob))
-                st.write(f"{class_labels[i]}: {prob*100:.2f}%")
+            # Kama uhakika ni zaidi ya 60%, endelea kuonyesha matokeo
+            if confidence > 70:
+                st.success(f"Ugonjwa: {predicted_class_name.upper()}")
+            else:
+                st.warning(f"Ugonjwa: {predicted_class_name.upper()}")
+            
+            st.metric(label="Uhakika (Confidence)", value=f"{confidence:.2f}%")
+            
+            st.markdown("##### Uwezekano wa Kila Darasa:")
+            for i, prob in enumerate(predictions[0]):
+                if prob > 0.01: 
+                    st.progress(float(prob))
+                    st.write(f"{class_labels[i]}: {prob*100:.2f}%")
     
     # ==========================================
-    # 5. MAELEZO YA UGONJWA (Case-Insensitive)
+    # 6. MAELEZO YA UGONJWA (Inaendelea tu kama confidence >= 60%)
     # ==========================================
     st.markdown("---")
     st.markdown("## Maelezo ya Ugonjwa")
     
-    # Tafuta jina la ugonjwa kwenye disease_info bila kujali herufi kubwa/ndogo
     predicted_key = None
     for key in disease_info.keys():
         if key.lower() == predicted_class_name.lower():
@@ -158,12 +175,10 @@ if uploaded_file is not None and model_loaded:
             st.markdown(info.get('kinga', 'Hakuna maelezo.'))
     else:
         st.info("Maelezo ya ugonjwa huu hayapatikani kwa sasa kwenye mfumo wetu.")
-        # Debug info (unaweza kuifuta baadaye)
-        st.write("---")
         st.write(f"**Debug:** Ugonjwa uliotabiriwa ni `{predicted_class_name}`")
 
 # ==========================================
-# 6. FOOTER
+# 7. FOOTER
 # ==========================================
 st.markdown("---")
 st.markdown(
